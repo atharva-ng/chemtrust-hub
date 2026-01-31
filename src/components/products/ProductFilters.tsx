@@ -10,86 +10,86 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { categories, grades } from "@/data/products";
+import { series, productTypes } from "@/data/products";
 
 interface ProductFiltersProps {
   searchQuery: string;
   onSearchChange: (value: string) => void;
-  selectedGrades: string[];
-  onGradeChange: (grades: string[]) => void;
-  selectedCategories: string[];
-  onCategoryChange: (categories: string[]) => void;
+  selectedSeries: string[];
+  onSeriesChange: (series: string[]) => void;
+  selectedTypes: string[];
+  onTypeChange: (types: string[]) => void;
   onClearFilters: () => void;
 }
 
 export function ProductFilters({
   searchQuery,
   onSearchChange,
-  selectedGrades,
-  onGradeChange,
-  selectedCategories,
-  onCategoryChange,
+  selectedSeries,
+  onSeriesChange,
+  selectedTypes,
+  onTypeChange,
   onClearFilters,
 }: ProductFiltersProps) {
   const hasActiveFilters =
-    searchQuery || selectedGrades.length > 0 || selectedCategories.length > 0;
+    searchQuery || selectedSeries.length > 0 || selectedTypes.length > 0;
 
-  const handleGradeToggle = (grade: string) => {
-    if (selectedGrades.includes(grade)) {
-      onGradeChange(selectedGrades.filter((g) => g !== grade));
+  const handleSeriesToggle = (s: string) => {
+    if (selectedSeries.includes(s)) {
+      onSeriesChange(selectedSeries.filter((item) => item !== s));
     } else {
-      onGradeChange([...selectedGrades, grade]);
+      onSeriesChange([...selectedSeries, s]);
     }
   };
 
-  const handleCategoryToggle = (category: string) => {
-    if (selectedCategories.includes(category)) {
-      onCategoryChange(selectedCategories.filter((c) => c !== category));
+  const handleTypeToggle = (type: string) => {
+    if (selectedTypes.includes(type)) {
+      onTypeChange(selectedTypes.filter((t) => t !== type));
     } else {
-      onCategoryChange([...selectedCategories, category]);
+      onTypeChange([...selectedTypes, type]);
     }
   };
 
   const FilterContent = () => (
     <div className="space-y-6">
-      {/* Grade Filter */}
+      {/* Series Filter */}
       <div>
-        <Label className="text-sm font-semibold">Grade</Label>
+        <Label className="text-sm font-semibold">Product Series</Label>
         <div className="mt-3 space-y-2">
-          {grades.map((grade) => (
-            <div key={grade} className="flex items-center space-x-2">
+          {series.map((s) => (
+            <div key={s} className="flex items-center space-x-2">
               <Checkbox
-                id={`grade-${grade}`}
-                checked={selectedGrades.includes(grade)}
-                onCheckedChange={() => handleGradeToggle(grade)}
+                id={`series-${s}`}
+                checked={selectedSeries.includes(s)}
+                onCheckedChange={() => handleSeriesToggle(s)}
               />
               <label
-                htmlFor={`grade-${grade}`}
+                htmlFor={`series-${s}`}
                 className="text-sm font-medium leading-none cursor-pointer"
               >
-                {grade}
+                {s}
               </label>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Category Filter */}
+      {/* Type Filter */}
       <div>
-        <Label className="text-sm font-semibold">Category</Label>
+        <Label className="text-sm font-semibold">Product Type</Label>
         <div className="mt-3 space-y-2">
-          {categories.map((category) => (
-            <div key={category} className="flex items-center space-x-2">
+          {productTypes.map((type) => (
+            <div key={type} className="flex items-center space-x-2">
               <Checkbox
-                id={`category-${category}`}
-                checked={selectedCategories.includes(category)}
-                onCheckedChange={() => handleCategoryToggle(category)}
+                id={`type-${type}`}
+                checked={selectedTypes.includes(type)}
+                onCheckedChange={() => handleTypeToggle(type)}
               />
               <label
-                htmlFor={`category-${category}`}
+                htmlFor={`type-${type}`}
                 className="text-sm font-medium leading-none cursor-pointer"
               >
-                {category}
+                {type}
               </label>
             </div>
           ))}
@@ -112,7 +112,7 @@ export function ProductFilters({
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
-            placeholder="Search chemicals..."
+            placeholder="Search products..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             className="pl-10"
@@ -145,24 +145,24 @@ export function ProductFilters({
       {/* Active Filters Display */}
       {hasActiveFilters && (
         <div className="flex flex-wrap gap-2 lg:hidden">
-          {selectedGrades.map((grade) => (
+          {selectedSeries.map((s) => (
             <span
-              key={grade}
+              key={s}
               className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary"
             >
-              {grade}
-              <button onClick={() => handleGradeToggle(grade)}>
+              {s}
+              <button onClick={() => handleSeriesToggle(s)}>
                 <X className="h-3 w-3" />
               </button>
             </span>
           ))}
-          {selectedCategories.map((category) => (
+          {selectedTypes.map((type) => (
             <span
-              key={category}
+              key={type}
               className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary"
             >
-              {category}
-              <button onClick={() => handleCategoryToggle(category)}>
+              {type}
+              <button onClick={() => handleTypeToggle(type)}>
                 <X className="h-3 w-3" />
               </button>
             </span>

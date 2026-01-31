@@ -3,38 +3,38 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  FlaskConical,
+  Sparkles,
   Shield,
   Award,
-  Globe,
-  Microscope,
+  Lightbulb,
   Users,
   CheckCircle,
   ArrowRight,
-  Beaker,
+  Target,
   Factory,
+  Leaf,
 } from "lucide-react";
 
 const highlights = [
   {
     icon: Award,
-    title: "25+ Years Experience",
-    description: "Trusted expertise in chemical manufacturing since 1998",
+    title: "Premium Quality",
+    description: "High quality raw materials with strict quality control at every stage",
   },
   {
     icon: Shield,
-    title: "Quality Certified",
-    description: "ISO 9001:2015 and GMP certified facilities",
+    title: "Safe & Effective",
+    description: "Product safety, effectiveness, and consistency guaranteed",
   },
   {
-    icon: Microscope,
-    title: "R&D Excellence",
-    description: "Dedicated research team for product innovation",
+    icon: Lightbulb,
+    title: "Innovative Formulas",
+    description: "Advanced formulations with improved efficiency and fragrance",
   },
   {
-    icon: Globe,
-    title: "Global Reach",
-    description: "Serving clients across 40+ countries worldwide",
+    icon: Users,
+    title: "Customer First",
+    description: "Solutions for real customer needs with prompt response",
   },
 ];
 
@@ -43,35 +43,35 @@ const whyChooseUs = [
     icon: CheckCircle,
     title: "Quality Assurance",
     description:
-      "Rigorous quality control at every stage ensures consistent product purity and performance.",
+      "High quality raw materials and strict quality control at every stage ensures product safety, effectiveness, and consistency.",
   },
   {
-    icon: Shield,
+    icon: Target,
+    title: "Customer Satisfaction",
+    description:
+      "Solutions designed for real customer needs with competitive pricing, prompt response, and continuous product improvement.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation",
+    description:
+      "Advanced formulations, new market-aligned products, improved efficiency, and adoption of emerging technologies.",
+  },
+  {
+    icon: Leaf,
     title: "Regulatory Compliance",
     description:
-      "Full compliance with international standards including REACH, FDA, and EPA regulations.",
-  },
-  {
-    icon: Users,
-    title: "Customer-Focused",
-    description:
-      "Dedicated account managers and technical support for personalized service.",
-  },
-  {
-    icon: Beaker,
-    title: "Technical Support",
-    description:
-      "Expert chemists available to assist with product selection and application guidance.",
+      "Full regulatory and quality compliance ensuring all products meet industry standards and safety requirements.",
   },
 ];
 
 const industries = [
-  "Pharmaceutical",
-  "Research & Academia",
-  "Food & Beverage",
-  "Electronics",
-  "Automotive",
-  "Water Treatment",
+  "Hotels & Hospitality",
+  "Hospitals & Healthcare",
+  "Commercial Buildings",
+  "Educational Institutions",
+  "Manufacturing Plants",
+  "Residential Complexes",
 ];
 
 export default function Home() {
@@ -88,21 +88,21 @@ export default function Home() {
         <div className="container relative">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border bg-background/80 px-4 py-2 text-sm backdrop-blur">
-              <FlaskConical className="h-4 w-4 text-primary" />
-              <span className="text-muted-foreground">Trusted Chemical Partner Since 1998</span>
+              <Sparkles className="h-4 w-4 text-primary" />
+              <span className="text-muted-foreground">Tough on Dirt. Gentle on Surfaces.</span>
             </div>
             <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-              Quality Chemicals for{" "}
-              <span className="text-primary">Critical Applications</span>
+              Clean That You Can See.{" "}
+              <span className="text-primary">Power You Can Trust.</span>
             </h1>
             <p className="mb-8 text-lg text-muted-foreground md:text-xl">
-              From laboratory research to industrial manufacturing, ChemCo delivers high-purity
-              chemical products with uncompromising quality and reliable supply.
+              Sapphire Chemicals delivers high-performance cleaning solutions under the CleanWhiz brand.
+              Engineered to clean. Built to last.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Button size="lg" asChild>
                 <Link to="/products">
-                  View Our Chemicals
+                  View Our Products
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -120,19 +120,17 @@ export default function Home() {
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-                Your Trusted Partner in Chemical Solutions
+                Hygiene is a Necessity, Not a Luxury
               </h2>
               <p className="mb-6 text-lg text-muted-foreground">
-                ChemCo Industries is a leading manufacturer and supplier of high-quality chemical
-                products serving diverse industries worldwide. With state-of-the-art facilities
-                and a commitment to excellence, we provide reliable solutions for your most
-                demanding applications.
+                Sapphire Chemicals is a specialized marketing firm for hygiene products, promoting
+                solutions that safeguard health, enhance well-being, and elevate everyday living.
               </p>
               <div className="space-y-3">
                 <p className="text-muted-foreground">
-                  Our comprehensive product portfolio includes industrial chemicals, laboratory
-                  reagents, and pharmaceutical-grade compounds—all manufactured under strict
-                  quality controls and certified to international standards.
+                  Our mission is to make effective, dependable, and modern hygiene solutions accessible
+                  to every market served. We focus on effectiveness, safety, consistency, innovation,
+                  and customer satisfaction.
                 </p>
               </div>
               <div className="mt-8">
@@ -163,8 +161,8 @@ export default function Home() {
                     <Shield className="h-6 w-6 text-accent" />
                   </div>
                   <div>
-                    <p className="font-semibold">ISO 9001:2015</p>
-                    <p className="text-sm text-muted-foreground">Certified Quality</p>
+                    <p className="font-semibold">Quality Assured</p>
+                    <p className="text-sm text-muted-foreground">Made in India</p>
                   </div>
                 </div>
               </div>
@@ -177,10 +175,10 @@ export default function Home() {
       <section className="border-y bg-muted/30 py-16 md:py-24">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Why ChemCo?</h2>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Why CleanWhiz?</h2>
             <p className="mx-auto max-w-2xl text-muted-foreground">
-              Decades of expertise combined with cutting-edge technology to deliver exceptional
-              quality and service.
+              Quality-driven manufacturing combined with innovative formulations to deliver
+              exceptional cleaning performance.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -203,10 +201,9 @@ export default function Home() {
       <section className="py-16 md:py-24">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">The ChemCo Advantage</h2>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Our Values</h2>
             <p className="mx-auto max-w-2xl text-muted-foreground">
-              Partner with a company that prioritizes your success through quality, compliance,
-              and dedicated support.
+              Partner with a company that prioritizes quality, customer satisfaction, and continuous innovation.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
@@ -232,7 +229,7 @@ export default function Home() {
             Ready to Get Started?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-primary-foreground/80">
-            Contact our team today to discuss your chemical requirements and discover how ChemCo
+            Contact our team today to discuss your cleaning requirements and discover how CleanWhiz
             can support your operations.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">

@@ -64,24 +64,24 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    content: "info@chemco-industries.com",
-    href: "mailto:info@chemco-industries.com",
+    content: "info@sapphirechemicals.in",
+    href: "mailto:info@sapphirechemicals.in",
   },
   {
     icon: Phone,
     title: "Phone",
-    content: "+1 (800) 555-0123",
-    href: "tel:+1-800-555-0123",
+    content: "+91 9820531690",
+    href: "tel:+919820531690",
   },
   {
     icon: MapPin,
     title: "Address",
-    content: "1234 Chemical Drive, Industrial Park, TX 75001, United States",
+    content: "Plot No. W-1, TTC/MIDC Thane Belapur Road, Opp. Sony DADC Pawane Village, Navi Mumbai, Thane - 400705",
   },
   {
     icon: Clock,
     title: "Business Hours",
-    content: "Monday - Friday: 8:00 AM - 6:00 PM CST",
+    content: "Monday - Saturday: 9:00 AM - 6:00 PM IST",
   },
 ];
 
@@ -311,7 +311,7 @@ export default function Contact() {
                     <div className="text-center p-4">
                       <MapPin className="mx-auto h-8 w-8 text-muted-foreground/50 mb-2" />
                       <p className="text-sm text-muted-foreground">
-                        Interactive map would be displayed here
+                        Navi Mumbai, Maharashtra
                       </p>
                     </div>
                   </div>
