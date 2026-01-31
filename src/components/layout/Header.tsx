@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, FlaskConical } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -21,9 +21,12 @@ export function Header() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <FlaskConical className="h-5 w-5 text-primary-foreground" />
+            <Sparkles className="h-5 w-5 text-primary-foreground" />
           </div>
-          <span className="text-xl font-bold text-foreground">ChemCo</span>
+          <div className="flex flex-col">
+            <span className="text-lg font-bold text-foreground leading-tight">CleanWhiz</span>
+            <span className="text-[10px] text-muted-foreground leading-none">by Sapphire Chemicals</span>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}

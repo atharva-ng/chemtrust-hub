@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FlaskConical, Mail, Phone, MapPin } from "lucide-react";
+import { Sparkles, Mail, Phone, MapPin } from "lucide-react";
 
 const navigation = {
   main: [
@@ -9,9 +9,10 @@ const navigation = {
     { name: "Contact Us", href: "/contact" },
   ],
   products: [
-    { name: "Industrial Chemicals", href: "/products?grade=Industrial" },
-    { name: "Laboratory Chemicals", href: "/products?grade=Laboratory" },
-    { name: "Pharmaceutical Grade", href: "/products?grade=Pharmaceutical" },
+    { name: "Housekeeping Series", href: "/products?series=Housekeeping Series" },
+    { name: "Kitchen Series", href: "/products?series=Kitchen Series" },
+    { name: "Laundry Series", href: "/products?series=Laundry Series" },
+    { name: "Industrial Cleaners", href: "/products?series=Washroom & Industrial Cleaners" },
   ],
 };
 
@@ -24,19 +25,22 @@ export function Footer() {
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <FlaskConical className="h-5 w-5 text-primary-foreground" />
+                <Sparkles className="h-5 w-5 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold">ChemCo</span>
+              <div className="flex flex-col">
+                <span className="text-lg font-bold leading-tight">CleanWhiz</span>
+                <span className="text-[10px] text-muted-foreground leading-none">by Sapphire Chemicals</span>
+              </div>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Providing high-quality chemical products for industrial, laboratory, and pharmaceutical applications since 1998.
+              Quality-driven manufacturer of high-performance cleaning solutions. Tough on dirt, gentle on surfaces.
             </p>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2.5 py-1 text-xs font-medium text-accent">
-                ISO 9001:2015
+                Quality Assured
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2.5 py-1 text-xs font-medium text-accent">
-                GMP Certified
+                Made in India
               </span>
             </div>
           </div>
@@ -60,7 +64,7 @@ export function Footer() {
 
           {/* Products */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold">Products</h3>
+            <h3 className="mb-4 text-sm font-semibold">Product Lines</h3>
             <ul className="space-y-3">
               {navigation.products.map((item) => (
                 <li key={item.name}>
@@ -82,27 +86,27 @@ export function Footer() {
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
                 <span>
-                  1234 Chemical Drive<br />
-                  Industrial Park, TX 75001<br />
-                  United States
+                  Plot No. W-1, TTC/MIDC Thane Belapur Road,<br />
+                  Opp. Sony DADC Pawane Village,<br />
+                  Navi Mumbai, Thane - 400705
                 </span>
               </li>
               <li>
                 <a
-                  href="tel:+1-800-555-0123"
+                  href="tel:+919820531690"
                   className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Phone className="h-4 w-4 shrink-0" />
-                  +1 (800) 555-0123
+                  +91 9820531690
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@chemco-industries.com"
+                  href="mailto:info@sapphirechemicals.in"
                   className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Mail className="h-4 w-4 shrink-0" />
-                  info@chemco-industries.com
+                  info@sapphirechemicals.in
                 </a>
               </li>
             </ul>
@@ -110,7 +114,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} ChemCo Industries. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Sapphire Chemicals. All rights reserved.</p>
         </div>
       </div>
     </footer>

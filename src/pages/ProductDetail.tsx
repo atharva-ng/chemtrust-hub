@@ -2,41 +2,42 @@ import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { products } from "@/data/products";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-} from "@/components/ui/table";
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import {
   ArrowLeft,
-  FileText,
-  Download,
+  Sparkles,
   AlertTriangle,
-  Beaker,
-  CheckCircle,
+  FileText,
+  Droplets,
+  Info,
 } from "lucide-react";
 
-const gradeColors = {
-  Industrial: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
-  Laboratory: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
-  Pharmaceutical: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
+const typeColors = {
+  Concentrate: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
+  "Ready to Use": "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
 };
 
 export default function ProductDetail() {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const product = products.find((p) => p.id === id);
 
   if (!product) {
     return (
       <Layout>
-        <div className="container py-16 text-center">
-          <Beaker className="mx-auto h-16 w-16 text-muted-foreground/50" />
-          <h1 className="mt-4 text-2xl font-bold">Product Not Found</h1>
+        <div className="container py-24 text-center">
+          <Sparkles className="mx-auto h-16 w-16 text-muted-foreground/50" />
+          <h1 className="mt-6 text-2xl font-bold">Product Not Found</h1>
           <p className="mt-2 text-muted-foreground">
-            The product you're looking for doesn't exist.
+            The product you're looking for doesn't exist or has been removed.
           </p>
           <Button asChild className="mt-6">
             <Link to="/products">
@@ -54,12 +55,25 @@ export default function ProductDetail() {
       {/* Breadcrumb */}
       <div className="border-b bg-muted/30">
         <div className="container py-4">
-          <Button variant="ghost" size="sm" asChild>
-            <Link to="/products">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Products
-            </Link>
-          </Button>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link to="/">Home</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link to="/products">Products</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>{product.name}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
         </div>
       </div>
 
@@ -69,102 +83,84 @@ export default function ProductDetail() {
           <div className="lg:col-span-2 space-y-8">
             {/* Header */}
             <div>
-              <div className="flex flex-wrap items-start gap-3 mb-4">
-                <h1 className="text-3xl font-bold md:text-4xl">{product.name}</h1>
-                <Badge variant="secondary" className={gradeColors[product.grade]}>
-                  {product.grade} Grade
-                </Badge>
+              <div className="flex items-start gap-4 mb-4">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                  <Sparkles className="h-7 w-7 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-primary mb-1">{product.code}</p>
+                  <h1 className="text-2xl font-bold md:text-3xl">{product.name}</h1>
+                </div>
               </div>
-              <p className="text-muted-foreground">CAS Number: {product.casNumber}</p>
-              <p className="mt-4 text-lg text-muted-foreground">{product.description}</p>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="secondary" className={typeColors[product.type]}>
+                  {product.type}
+                </Badge>
+                <Badge variant="outline">{product.series}</Badge>
+              </div>
             </div>
 
-            {/* Chemical Properties */}
+            {/* Description */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Beaker className="h-5 w-5" />
-                  Chemical Properties
+                  <Info className="h-5 w-5 text-primary" />
+                  Description
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <Table>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell className="font-medium">Molecular Formula</TableCell>
-                      <TableCell>{product.properties.molecularFormula}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell className="font-medium">Molecular Weight</TableCell>
-                      <TableCell>{product.properties.molecularWeight}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell className="font-medium">Appearance</TableCell>
-                      <TableCell>{product.properties.appearance}</TableCell>
-                    </TableRow>
-                    {product.properties.density && (
-                      <TableRow>
-                        <TableCell className="font-medium">Density</TableCell>
-                        <TableCell>{product.properties.density}</TableCell>
-                      </TableRow>
-                    )}
-                    {product.properties.meltingPoint && (
-                      <TableRow>
-                        <TableCell className="font-medium">Melting Point</TableCell>
-                        <TableCell>{product.properties.meltingPoint}</TableCell>
-                      </TableRow>
-                    )}
-                    {product.properties.boilingPoint && (
-                      <TableRow>
-                        <TableCell className="font-medium">Boiling Point</TableCell>
-                        <TableCell>{product.properties.boilingPoint}</TableCell>
-                      </TableRow>
-                    )}
-                    <TableRow>
-                      <TableCell className="font-medium">Purity</TableCell>
-                      <TableCell>{product.properties.purity}</TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
+                <p className="text-muted-foreground">{product.description}</p>
               </CardContent>
             </Card>
 
-            {/* Applications */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5" />
-                  Applications
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="grid gap-2 sm:grid-cols-2">
-                  {product.applications.map((application, index) => (
-                    <li key={index} className="flex items-center gap-2">
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                      {application}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+            {/* Usage Instructions */}
+            {product.usage && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Droplets className="h-5 w-5 text-primary" />
+                    Dilution & Usage
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="py-3 pr-4 text-left font-semibold">Condition</th>
+                          <th className="py-3 text-left font-semibold">Recommended Dilution</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {Object.entries(product.usage).map(([key, value]) => (
+                          <tr key={key} className="border-b last:border-0">
+                            <td className="py-3 pr-4 text-muted-foreground">{key}</td>
+                            <td className="py-3 font-medium">{value}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
 
             {/* Safety Information */}
-            <Card className="border-yellow-600/30">
-              <CardHeader className="bg-yellow-50/50 dark:bg-yellow-900/20">
-                <CardTitle className="flex items-center gap-2 text-yellow-700 dark:text-yellow-300">
+            <Card className="border-amber-200 bg-amber-50/50 dark:border-amber-900/50 dark:bg-amber-950/20">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-amber-800 dark:text-amber-200">
                   <AlertTriangle className="h-5 w-5" />
                   Safety & Handling
                 </CardTitle>
               </CardHeader>
-              <CardContent className="pt-4">
-                <ul className="space-y-2">
-                  {product.safetyInfo.map((info, index) => (
-                    <li key={index} className="flex items-start gap-2 text-sm">
-                      <AlertTriangle className="h-4 w-4 mt-0.5 shrink-0 text-yellow-600 dark:text-yellow-400" />
-                      {info}
-                    </li>
-                  ))}
+              <CardContent className="text-amber-900/80 dark:text-amber-100/80">
+                <ul className="space-y-2 text-sm">
+                  <li>• Keep out of reach of children</li>
+                  <li>• Store in a cool, dry place away from direct sunlight</li>
+                  <li>• Do not mix with other cleaning products</li>
+                  <li>• Use protective gloves when handling concentrate products</li>
+                  <li>• In case of eye contact, rinse immediately with plenty of water</li>
+                  <li>• Refer to product label for complete safety instructions</li>
                 </ul>
               </CardContent>
             </Card>
@@ -172,72 +168,67 @@ export default function ProductDetail() {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            {/* Product Info Card */}
+            {/* Quick Info */}
             <Card>
               <CardHeader>
-                <CardTitle>Product Details</CardTitle>
+                <CardTitle>Product Information</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div>
-                  <p className="text-sm text-muted-foreground">Potency</p>
-                  <p className="font-semibold">{product.potency}</p>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Product Code</span>
+                  <span className="font-medium">{product.code}</span>
                 </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Category</p>
-                  <p className="font-semibold">{product.category}</p>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Type</span>
+                  <span className="font-medium">{product.type}</span>
                 </div>
-                <div>
-                  <p className="text-sm text-muted-foreground mb-2">Available Packaging</p>
-                  <div className="flex flex-wrap gap-2">
-                    {product.weights.map((weight) => (
-                      <span
-                        key={weight}
-                        className="rounded-md border bg-muted/50 px-2.5 py-1 text-sm font-medium"
-                      >
-                        {weight}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Series</span>
+                  <span className="font-medium">{product.series}</span>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Downloads */}
+            {/* Documentation */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <FileText className="h-5 w-5" />
-                  Documentation
-                </CardTitle>
+                <CardTitle>Documentation</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Button variant="outline" className="w-full justify-start" asChild>
-                  <a href={product.sdsLink}>
-                    <Download className="mr-2 h-4 w-4" />
-                    Safety Data Sheet (SDS)
-                  </a>
+                <Button variant="outline" className="w-full justify-start" disabled>
+                  <FileText className="mr-2 h-4 w-4" />
+                  Technical Data Sheet
                 </Button>
-                <Button variant="outline" className="w-full justify-start" asChild>
-                  <a href={product.technicalDatasheetLink}>
-                    <Download className="mr-2 h-4 w-4" />
-                    Technical Datasheet
-                  </a>
+                <Button variant="outline" className="w-full justify-start" disabled>
+                  <FileText className="mr-2 h-4 w-4" />
+                  Safety Data Sheet (SDS)
                 </Button>
+                <p className="text-xs text-muted-foreground">
+                  Contact us for product documentation
+                </p>
               </CardContent>
             </Card>
 
             {/* CTA */}
-            <Card className="bg-primary text-primary-foreground">
+            <Card className="bg-primary/5 border-primary/20">
               <CardContent className="p-6">
-                <h3 className="font-semibold text-lg mb-2">Need This Product?</h3>
-                <p className="text-sm text-primary-foreground/80 mb-4">
-                  Contact us for pricing, availability, and custom packaging options.
+                <h3 className="font-semibold mb-2">Need This Product?</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Contact our sales team for pricing and availability.
                 </p>
-                <Button variant="secondary" className="w-full" asChild>
+                <Button asChild className="w-full">
                   <Link to="/contact">Request a Quote</Link>
                 </Button>
               </CardContent>
             </Card>
+
+            {/* Back to Products */}
+            <Button variant="outline" asChild className="w-full">
+              <Link to="/products">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Products
+              </Link>
+            </Button>
           </div>
         </div>
       </div>

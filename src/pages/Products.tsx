@@ -4,16 +4,16 @@ import { Layout } from "@/components/layout/Layout";
 import { ProductCard } from "@/components/products/ProductCard";
 import { ProductFilters } from "@/components/products/ProductFilters";
 import { products } from "@/data/products";
-import { Beaker } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export default function Products() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
-  const [selectedGrades, setSelectedGrades] = useState<string[]>(() => {
-    const grade = searchParams.get("grade");
-    return grade ? [grade] : [];
+  const [selectedSeries, setSelectedSeries] = useState<string[]>(() => {
+    const series = searchParams.get("series");
+    return series ? [series] : [];
   });
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
@@ -22,30 +22,30 @@ export default function Products() {
         const query = searchQuery.toLowerCase();
         const matchesSearch =
           product.name.toLowerCase().includes(query) ||
-          product.shortDescription.toLowerCase().includes(query) ||
-          product.casNumber.includes(query) ||
-          product.category.toLowerCase().includes(query);
+          product.description.toLowerCase().includes(query) ||
+          product.code.toLowerCase().includes(query) ||
+          product.series.toLowerCase().includes(query);
         if (!matchesSearch) return false;
       }
 
-      // Grade filter
-      if (selectedGrades.length > 0 && !selectedGrades.includes(product.grade)) {
+      // Series filter
+      if (selectedSeries.length > 0 && !selectedSeries.includes(product.series)) {
         return false;
       }
 
-      // Category filter
-      if (selectedCategories.length > 0 && !selectedCategories.includes(product.category)) {
+      // Type filter
+      if (selectedTypes.length > 0 && !selectedTypes.includes(product.type)) {
         return false;
       }
 
       return true;
     });
-  }, [searchQuery, selectedGrades, selectedCategories]);
+  }, [searchQuery, selectedSeries, selectedTypes]);
 
   const handleClearFilters = () => {
     setSearchQuery("");
-    setSelectedGrades([]);
-    setSelectedCategories([]);
+    setSelectedSeries([]);
+    setSelectedTypes([]);
     setSearchParams({});
   };
 
@@ -56,14 +56,14 @@ export default function Products() {
         <div className="container">
           <div className="flex items-center gap-3 mb-4">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-              <Beaker className="h-5 w-5 text-primary" />
+              <Sparkles className="h-5 w-5 text-primary" />
             </div>
-            <h1 className="text-3xl font-bold md:text-4xl">Chemical Products</h1>
+            <h1 className="text-3xl font-bold md:text-4xl">CleanWhiz Products</h1>
           </div>
           <p className="max-w-2xl text-muted-foreground">
-            Browse our comprehensive catalog of high-quality industrial, laboratory, and
-            pharmaceutical-grade chemicals. All products meet strict quality standards and are
-            available with full documentation.
+            Browse our comprehensive range of high-performance cleaning solutions for housekeeping,
+            kitchen, laundry, and industrial applications. All products are quality assured and
+            designed for professional results.
           </p>
         </div>
       </section>
@@ -77,10 +77,10 @@ export default function Products() {
               <ProductFilters
                 searchQuery={searchQuery}
                 onSearchChange={setSearchQuery}
-                selectedGrades={selectedGrades}
-                onGradeChange={setSelectedGrades}
-                selectedCategories={selectedCategories}
-                onCategoryChange={setSelectedCategories}
+                selectedSeries={selectedSeries}
+                onSeriesChange={setSelectedSeries}
+                selectedTypes={selectedTypes}
+                onTypeChange={setSelectedTypes}
                 onClearFilters={handleClearFilters}
               />
             </aside>
@@ -101,7 +101,7 @@ export default function Products() {
                 </div>
               ) : (
                 <div className="rounded-lg border bg-muted/30 p-12 text-center">
-                  <Beaker className="mx-auto h-12 w-12 text-muted-foreground/50" />
+                  <Sparkles className="mx-auto h-12 w-12 text-muted-foreground/50" />
                   <h3 className="mt-4 font-semibold">No products found</h3>
                   <p className="mt-2 text-sm text-muted-foreground">
                     Try adjusting your search or filter criteria.
