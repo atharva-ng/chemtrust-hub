@@ -4,6 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { ProductCard } from "@/components/products/ProductCard";
 import { ProductFilters } from "@/components/products/ProductFilters";
 import { products } from "@/data/products";
+import { productsPage } from "@/data/productDetail";
 import { Sparkles } from "lucide-react";
 
 export default function Products() {
@@ -58,12 +59,10 @@ export default function Products() {
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
               <Sparkles className="h-5 w-5 text-primary" />
             </div>
-            <h1 className="text-3xl font-bold md:text-4xl">CleanWhiz Products</h1>
+            <h1 className="text-3xl font-bold md:text-4xl">{productsPage.title}</h1>
           </div>
           <p className="max-w-2xl text-muted-foreground">
-            Browse our comprehensive range of high-performance cleaning solutions for housekeeping,
-            kitchen, laundry, and industrial applications. All products are quality assured and
-            designed for professional results.
+            {productsPage.description}
           </p>
         </div>
       </section>
@@ -102,9 +101,9 @@ export default function Products() {
               ) : (
                 <div className="rounded-lg border bg-muted/30 p-12 text-center">
                   <Sparkles className="mx-auto h-12 w-12 text-muted-foreground/50" />
-                  <h3 className="mt-4 font-semibold">No products found</h3>
+                  <h3 className="mt-4 font-semibold">{productsPage.noResultsTitle}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Try adjusting your search or filter criteria.
+                    {productsPage.noResultsDescription}
                   </p>
                 </div>
               )}

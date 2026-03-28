@@ -20,11 +20,12 @@ import {
   Droplets,
   Info,
 } from "lucide-react";
-
-const typeColors = {
-  Concentrate: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
-  "Ready to Use": "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
-};
+import {
+  typeColors,
+  safetyTips,
+  productNotFound,
+  productDetailLabels as labels,
+} from "@/data/productDetail";
 
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
@@ -35,14 +36,14 @@ export default function ProductDetail() {
       <Layout>
         <div className="container py-24 text-center">
           <Sparkles className="mx-auto h-16 w-16 text-muted-foreground/50" />
-          <h1 className="mt-6 text-2xl font-bold">Product Not Found</h1>
+          <h1 className="mt-6 text-2xl font-bold">{productNotFound.title}</h1>
           <p className="mt-2 text-muted-foreground">
-            The product you're looking for doesn't exist or has been removed.
+            {productNotFound.description}
           </p>
           <Button asChild className="mt-6">
             <Link to="/products">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Products
+              {productNotFound.backButton}
             </Link>
           </Button>
         </div>
@@ -105,7 +106,7 @@ export default function ProductDetail() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Info className="h-5 w-5 text-primary" />
-                  Description
+                  {labels.description}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -119,7 +120,7 @@ export default function ProductDetail() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Droplets className="h-5 w-5 text-primary" />
-                    Dilution & Usage
+                    {labels.dilutionUsage}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -127,8 +128,8 @@ export default function ProductDetail() {
                     <table className="w-full text-sm">
                       <thead>
                         <tr className="border-b">
-                          <th className="py-3 pr-4 text-left font-semibold">Condition</th>
-                          <th className="py-3 text-left font-semibold">Recommended Dilution</th>
+                          <th className="py-3 pr-4 text-left font-semibold">{labels.conditionColumn}</th>
+                          <th className="py-3 text-left font-semibold">{labels.dilutionColumn}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -150,17 +151,14 @@ export default function ProductDetail() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-amber-800 dark:text-amber-200">
                   <AlertTriangle className="h-5 w-5" />
-                  Safety & Handling
+                  {labels.safetyTitle}
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-amber-900/80 dark:text-amber-100/80">
                 <ul className="space-y-2 text-sm">
-                  <li>• Keep out of reach of children</li>
-                  <li>• Store in a cool, dry place away from direct sunlight</li>
-                  <li>• Do not mix with other cleaning products</li>
-                  <li>• Use protective gloves when handling concentrate products</li>
-                  <li>• In case of eye contact, rinse immediately with plenty of water</li>
-                  <li>• Refer to product label for complete safety instructions</li>
+                  {safetyTips.map((tip) => (
+                    <li key={tip}>• {tip}</li>
+                  ))}
                 </ul>
               </CardContent>
             </Card>
@@ -171,19 +169,19 @@ export default function ProductDetail() {
             {/* Quick Info */}
             <Card>
               <CardHeader>
-                <CardTitle>Product Information</CardTitle>
+                <CardTitle>{labels.productInfo}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Product Code</span>
+                  <span className="text-muted-foreground">{labels.productCode}</span>
                   <span className="font-medium">{product.code}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Type</span>
+                  <span className="text-muted-foreground">{labels.type}</span>
                   <span className="font-medium">{product.type}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Series</span>
+                  <span className="text-muted-foreground">{labels.series}</span>
                   <span className="font-medium">{product.series}</span>
                 </div>
               </CardContent>
@@ -192,19 +190,19 @@ export default function ProductDetail() {
             {/* Documentation */}
             <Card>
               <CardHeader>
-                <CardTitle>Documentation</CardTitle>
+                <CardTitle>{labels.documentation}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <Button variant="outline" className="w-full justify-start" disabled>
                   <FileText className="mr-2 h-4 w-4" />
-                  Technical Data Sheet
+                  {labels.tdsButton}
                 </Button>
                 <Button variant="outline" className="w-full justify-start" disabled>
                   <FileText className="mr-2 h-4 w-4" />
-                  Safety Data Sheet (SDS)
+                  {labels.sdsButton}
                 </Button>
                 <p className="text-xs text-muted-foreground">
-                  Contact us for product documentation
+                  {labels.docNote}
                 </p>
               </CardContent>
             </Card>
@@ -212,12 +210,12 @@ export default function ProductDetail() {
             {/* CTA */}
             <Card className="bg-primary/5 border-primary/20">
               <CardContent className="p-6">
-                <h3 className="font-semibold mb-2">Need This Product?</h3>
+                <h3 className="font-semibold mb-2">{labels.ctaTitle}</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Contact our sales team for pricing and availability.
+                  {labels.ctaDescription}
                 </p>
                 <Button asChild className="w-full">
-                  <Link to="/contact">Request a Quote</Link>
+                  <Link to="/contact">{labels.ctaButton}</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -226,7 +224,7 @@ export default function ProductDetail() {
             <Button variant="outline" asChild className="w-full">
               <Link to="/products">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Products
+                {productNotFound.backButton}
               </Link>
             </Button>
           </div>

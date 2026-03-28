@@ -14,65 +14,18 @@ import {
   Factory,
   Leaf,
 } from "lucide-react";
+import {
+  heroSection,
+  introSection,
+  industries,
+  highlightsSection,
+  highlights,
+  valuesSection,
+  whyChooseUs,
+  ctaSection,
+} from "@/data/home";
 
-const highlights = [
-  {
-    icon: Award,
-    title: "Premium Quality",
-    description: "High quality raw materials with strict quality control at every stage",
-  },
-  {
-    icon: Shield,
-    title: "Safe & Effective",
-    description: "Product safety, effectiveness, and consistency guaranteed",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovative Formulas",
-    description: "Advanced formulations with improved efficiency and fragrance",
-  },
-  {
-    icon: Users,
-    title: "Customer First",
-    description: "Solutions for real customer needs with prompt response",
-  },
-];
-
-const whyChooseUs = [
-  {
-    icon: CheckCircle,
-    title: "Quality Assurance",
-    description:
-      "High quality raw materials and strict quality control at every stage ensures product safety, effectiveness, and consistency.",
-  },
-  {
-    icon: Target,
-    title: "Customer Satisfaction",
-    description:
-      "Solutions designed for real customer needs with competitive pricing, prompt response, and continuous product improvement.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    description:
-      "Advanced formulations, new market-aligned products, improved efficiency, and adoption of emerging technologies.",
-  },
-  {
-    icon: Leaf,
-    title: "Regulatory Compliance",
-    description:
-      "Full regulatory and quality compliance ensuring all products meet industry standards and safety requirements.",
-  },
-];
-
-const industries = [
-  "Hotels & Hospitality",
-  "Hospitals & Healthcare",
-  "Commercial Buildings",
-  "Educational Institutions",
-  "Manufacturing Plants",
-  "Residential Complexes",
-];
+const iconMap = { Award, Shield, Lightbulb, Users, CheckCircle, Target, Leaf };
 
 export default function Home() {
   return (
@@ -89,25 +42,24 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border bg-background/80 px-4 py-2 text-sm backdrop-blur">
               <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-muted-foreground">Tough on Dirt. Gentle on Surfaces.</span>
+              <span className="text-muted-foreground">{heroSection.badge}</span>
             </div>
             <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-              Clean That You Can See.{" "}
-              <span className="text-primary">Power You Can Trust.</span>
+              {heroSection.headline}{" "}
+              <span className="text-primary">{heroSection.headlineAccent}</span>
             </h1>
             <p className="mb-8 text-lg text-muted-foreground md:text-xl">
-              Sapphire Chemicals delivers high-performance cleaning solutions under the CleanWhiz brand.
-              Engineered to clean. Built to last.
+              {heroSection.subheading}
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Button size="lg" asChild>
                 <Link to="/products">
-                  View Our Products
+                  {heroSection.ctaPrimary}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link to="/contact">Contact Us</Link>
+                <Link to="/contact">{heroSection.ctaSecondary}</Link>
               </Button>
             </div>
           </div>
@@ -120,22 +72,19 @@ export default function Home() {
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-                Hygiene is a Necessity, Not a Luxury
+                {introSection.title}
               </h2>
               <p className="mb-6 text-lg text-muted-foreground">
-                Sapphire Chemicals is a specialized marketing firm for hygiene products, promoting
-                solutions that safeguard health, enhance well-being, and elevate everyday living.
+                {introSection.description}
               </p>
               <div className="space-y-3">
                 <p className="text-muted-foreground">
-                  Our mission is to make effective, dependable, and modern hygiene solutions accessible
-                  to every market served. We focus on effectiveness, safety, consistency, innovation,
-                  and customer satisfaction.
+                  {introSection.body}
                 </p>
               </div>
               <div className="mt-8">
                 <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                  Industries We Serve
+                  {introSection.industriesLabel}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {industries.map((industry) => (
@@ -161,8 +110,8 @@ export default function Home() {
                     <Shield className="h-6 w-6 text-accent" />
                   </div>
                   <div>
-                    <p className="font-semibold">Quality Assured</p>
-                    <p className="text-sm text-muted-foreground">Made in India</p>
+                    <p className="font-semibold">{introSection.qualityBadge}</p>
+                    <p className="text-sm text-muted-foreground">{introSection.originBadge}</p>
                   </div>
                 </div>
               </div>
@@ -175,24 +124,26 @@ export default function Home() {
       <section className="border-y bg-muted/30 py-16 md:py-24">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Why CleanWhiz?</h2>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">{highlightsSection.title}</h2>
             <p className="mx-auto max-w-2xl text-muted-foreground">
-              Quality-driven manufacturing combined with innovative formulations to deliver
-              exceptional cleaning performance.
+              {highlightsSection.description}
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {highlights.map((item) => (
-              <Card key={item.title} className="border-none bg-background shadow-sm">
-                <CardContent className="p-6">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <item.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="mb-2 font-semibold">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {highlights.map((item) => {
+              const Icon = iconMap[item.iconName];
+              return (
+                <Card key={item.title} className="border-none bg-background shadow-sm">
+                  <CardContent className="p-6">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                      <Icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="mb-2 font-semibold">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -201,23 +152,26 @@ export default function Home() {
       <section className="py-16 md:py-24">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Our Values</h2>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">{valuesSection.title}</h2>
             <p className="mx-auto max-w-2xl text-muted-foreground">
-              Partner with a company that prioritizes quality, customer satisfaction, and continuous innovation.
+              {valuesSection.description}
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
-            {whyChooseUs.map((item) => (
-              <div key={item.title} className="flex gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
-                  <item.icon className="h-5 w-5 text-accent" />
+            {whyChooseUs.map((item) => {
+              const Icon = iconMap[item.iconName];
+              return (
+                <div key={item.title} className="flex gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                    <Icon className="h-5 w-5 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="mb-2 font-semibold">{item.title}</h3>
+                    <p className="text-muted-foreground">{item.description}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="mb-2 font-semibold">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -226,15 +180,14 @@ export default function Home() {
       <section className="border-t bg-primary py-16 md:py-24">
         <div className="container text-center">
           <h2 className="mb-4 text-3xl font-bold text-primary-foreground md:text-4xl">
-            Ready to Get Started?
+            {ctaSection.title}
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-primary-foreground/80">
-            Contact our team today to discuss your cleaning requirements and discover how CleanWhiz
-            can support your operations.
+            {ctaSection.description}
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Button size="lg" variant="secondary" asChild>
-              <Link to="/products">Browse Products</Link>
+              <Link to="/products">{ctaSection.ctaPrimary}</Link>
             </Button>
             <Button
               size="lg"
@@ -242,7 +195,7 @@ export default function Home() {
               className="border-primary-foreground/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
               asChild
             >
-              <Link to="/contact">Request a Quote</Link>
+              <Link to="/contact">{ctaSection.ctaSecondary}</Link>
             </Button>
           </div>
         </div>

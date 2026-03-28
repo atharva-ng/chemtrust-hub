@@ -3,13 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Products", href: "/products" },
-  { name: "About Us", href: "/about" },
-  { name: "Contact Us", href: "/contact" },
-];
+import { company } from "@/data/company";
+import { mainNavLinks } from "@/data/navigation";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -24,14 +19,14 @@ export function Header() {
             <Sparkles className="h-5 w-5 text-primary-foreground" />
           </div>
           <div className="flex flex-col">
-            <span className="text-lg font-bold text-foreground leading-tight">CleanWhiz</span>
-            <span className="text-[10px] text-muted-foreground leading-none">by Sapphire Chemicals</span>
+            <span className="text-lg font-bold text-foreground leading-tight">{company.brand}</span>
+            <span className="text-[10px] text-muted-foreground leading-none">by {company.name}</span>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:gap-1">
-          {navigation.map((item) => (
+          {mainNavLinks.map((item) => (
             <Link
               key={item.name}
               to={item.href}
@@ -73,7 +68,7 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="md:hidden border-t bg-background">
           <div className="container py-4 space-y-2">
-            {navigation.map((item) => (
+            {mainNavLinks.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}

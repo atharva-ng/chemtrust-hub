@@ -12,47 +12,18 @@ import {
   Users,
   CheckCircle,
 } from "lucide-react";
+import {
+  aboutHero,
+  companyStory,
+  missionAndBelief,
+  focusAreasSection,
+  focusAreas,
+  aboutValuesSection,
+  aboutValues,
+  teamSection,
+} from "@/data/about";
 
-const values = [
-  {
-    icon: Award,
-    title: "Quality",
-    points: [
-      "High quality raw materials",
-      "Strict quality control at every stage",
-      "Product safety, effectiveness, and consistency",
-      "Regulatory and quality compliance",
-    ],
-  },
-  {
-    icon: Users,
-    title: "Customer Satisfaction",
-    points: [
-      "Solutions for real customer needs",
-      "Competitive pricing",
-      "Prompt customer response",
-      "Continuous product improvement",
-    ],
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    points: [
-      "Advanced formulations",
-      "New market-aligned products",
-      "Improved efficiency and fragrance",
-      "Adoption of emerging technologies",
-    ],
-  },
-];
-
-const focusAreas = [
-  "Effectiveness",
-  "Safety",
-  "Consistency",
-  "Innovation",
-  "Customer Satisfaction",
-];
+const iconMap = { Award, Users, Lightbulb };
 
 export default function About() {
   return (
@@ -61,10 +32,9 @@ export default function About() {
       <section className="border-b bg-gradient-to-br from-primary/5 via-background to-accent/5 py-16 md:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-4 text-4xl font-bold md:text-5xl">About Sapphire Chemicals</h1>
+            <h1 className="mb-4 text-4xl font-bold md:text-5xl">{aboutHero.title}</h1>
             <p className="text-lg text-muted-foreground">
-              Quality-driven manufacturer of high-performance cleaning solutions under the CleanWhiz brand.
-              We believe hygiene is a necessity, not a luxury.
+              {aboutHero.subtitle}
             </p>
           </div>
         </div>
@@ -75,23 +45,11 @@ export default function About() {
         <div className="container">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
-              <h2 className="mb-4 text-3xl font-bold">Our Story</h2>
+              <h2 className="mb-4 text-3xl font-bold">{companyStory.title}</h2>
               <div className="space-y-4 text-muted-foreground">
-                <p>
-                  Sapphire Chemicals is a specialized marketing firm for hygiene products, promoting
-                  solutions that safeguard health, enhance well-being, and elevate everyday living.
-                </p>
-                <p>
-                  Under our CleanWhiz brand, we deliver high-performance cleaning solutions for
-                  diverse applications—from housekeeping and kitchen care to industrial cleaning
-                  and laundry. Our products are trusted by hotels, hospitals, commercial establishments,
-                  and households across India.
-                </p>
-                <p>
-                  We are committed to making effective, dependable, and modern hygiene solutions
-                  accessible to every market we serve, maintaining the highest standards of quality
-                  and customer satisfaction.
-                </p>
+                {companyStory.paragraphs.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
               </div>
             </div>
             <div className="relative">
@@ -112,11 +70,9 @@ export default function About() {
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                   <Target className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="mb-3 text-xl font-semibold">Our Mission</h3>
+                <h3 className="mb-3 text-xl font-semibold">{missionAndBelief.mission.title}</h3>
                 <p className="text-muted-foreground">
-                  To make effective, dependable, and modern hygiene solutions accessible to every
-                  market served. We are committed to delivering products that combine effectiveness,
-                  safety, consistency, and innovation.
+                  {missionAndBelief.mission.description}
                 </p>
               </CardContent>
             </Card>
@@ -125,11 +81,9 @@ export default function About() {
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
                   <Eye className="h-6 w-6 text-accent" />
                 </div>
-                <h3 className="mb-3 text-xl font-semibold">Our Belief</h3>
+                <h3 className="mb-3 text-xl font-semibold">{missionAndBelief.belief.title}</h3>
                 <p className="text-muted-foreground">
-                  Hygiene is a necessity, not a luxury. Every space deserves professional-grade
-                  cleanliness, and every customer deserves products that deliver on their promises.
-                  Clean that you can see. Power you can trust.
+                  {missionAndBelief.belief.description}
                 </p>
               </CardContent>
             </Card>
@@ -141,9 +95,9 @@ export default function About() {
       <section className="py-16 md:py-24">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold">Our Focus Areas</h2>
+            <h2 className="mb-4 text-3xl font-bold">{focusAreasSection.title}</h2>
             <p className="mx-auto max-w-2xl text-muted-foreground">
-              Every product we develop is guided by these core principles.
+              {focusAreasSection.description}
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
@@ -164,30 +118,33 @@ export default function About() {
       <section className="border-y bg-muted/30 py-16 md:py-24">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold">Our Values</h2>
+            <h2 className="mb-4 text-3xl font-bold">{aboutValuesSection.title}</h2>
             <p className="mx-auto max-w-2xl text-muted-foreground">
-              The principles that guide everything we do at Sapphire Chemicals.
+              {aboutValuesSection.description}
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-            {values.map((value) => (
-              <Card key={value.title} className="bg-background">
-                <CardContent className="p-6">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                    <value.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="mb-4 font-semibold text-lg">{value.title}</h3>
-                  <ul className="space-y-2">
-                    {value.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <Shield className="h-4 w-4 shrink-0 text-accent mt-0.5" />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
+            {aboutValues.map((value) => {
+              const Icon = iconMap[value.iconName];
+              return (
+                <Card key={value.title} className="bg-background">
+                  <CardContent className="p-6">
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                      <Icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <h3 className="mb-4 font-semibold text-lg">{value.title}</h3>
+                    <ul className="space-y-2">
+                      {value.points.map((point) => (
+                        <li key={point} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <Shield className="h-4 w-4 shrink-0 text-accent mt-0.5" />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -196,10 +153,9 @@ export default function About() {
       <section className="py-16 md:py-24">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold">Meet Our Team</h2>
+            <h2 className="mb-4 text-3xl font-bold">{teamSection.title}</h2>
             <p className="mx-auto max-w-2xl text-muted-foreground">
-              The expertise and vision of our leadership team drives Sapphire Chemicals' commitment
-              to excellence.
+              {teamSection.description}
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

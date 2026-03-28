@@ -31,6 +31,14 @@ import {
   Send,
 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { company } from "@/data/company";
+import {
+  contactHero,
+  contactFormText,
+  inquiryTypes,
+  formFields,
+  contactSidebar,
+} from "@/data/contact";
 
 const contactSchema = z.object({
   name: z
@@ -64,24 +72,24 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    content: "info@sapphirechemicals.in",
-    href: "mailto:info@sapphirechemicals.in",
+    content: company.email,
+    href: company.emailHref,
   },
   {
     icon: Phone,
     title: "Phone",
-    content: "+91 9820531690",
-    href: "tel:+919820531690",
+    content: company.phone,
+    href: company.phoneHref,
   },
   {
     icon: MapPin,
     title: "Address",
-    content: "Plot No. W-1, TTC/MIDC Thane Belapur Road, Opp. Sony DADC Pawane Village, Navi Mumbai, Thane - 400705",
+    content: company.address.full,
   },
   {
     icon: Clock,
     title: "Business Hours",
-    content: "Monday - Saturday: 9:00 AM - 6:00 PM IST",
+    content: company.businessHours,
   },
 ];
 
@@ -99,18 +107,18 @@ export default function Contact() {
     },
   });
 
-  const onSubmit = async (data: ContactFormValues) => {
+  const onSubmit = async (_data: ContactFormValues) => {
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    
+
     setIsSubmitting(false);
     setIsSubmitted(true);
-    
+
     toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you within 24-48 hours.",
+      title: contactFormText.toastTitle,
+      description: contactFormText.toastDescription,
     });
   };
 
@@ -120,10 +128,9 @@ export default function Contact() {
       <section className="border-b bg-gradient-to-br from-primary/5 via-background to-accent/5 py-16 md:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-4 text-4xl font-bold md:text-5xl">Contact Us</h1>
+            <h1 className="mb-4 text-4xl font-bold md:text-5xl">{contactHero.title}</h1>
             <p className="text-lg text-muted-foreground">
-              Have questions about our products or need a quote? Our team is ready to help.
-              Reach out and we'll respond within 24-48 business hours.
+              {contactHero.description}
             </p>
           </div>
         </div>
@@ -136,7 +143,7 @@ export default function Contact() {
             <div className="lg:col-span-2">
               <Card>
                 <CardHeader>
-                  <CardTitle>Send Us a Message</CardTitle>
+                  <CardTitle>{contactFormText.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   {isSubmitted ? (
@@ -144,10 +151,9 @@ export default function Contact() {
                       <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent/10">
                         <CheckCircle className="h-8 w-8 text-accent" />
                       </div>
-                      <h3 className="mb-2 text-xl font-semibold">Thank You!</h3>
+                      <h3 className="mb-2 text-xl font-semibold">{contactFormText.successTitle}</h3>
                       <p className="text-muted-foreground mb-6">
-                        Your message has been received. Our team will review your inquiry
-                        and get back to you within 24-48 business hours.
+                        {contactFormText.successMessage}
                       </p>
                       <Button
                         variant="outline"
@@ -156,7 +162,7 @@ export default function Contact() {
                           form.reset();
                         }}
                       >
-                        Send Another Message
+                        {contactFormText.sendAnother}
                       </Button>
                     </div>
                   ) : (
@@ -168,9 +174,9 @@ export default function Contact() {
                             name="name"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Name *</FormLabel>
+                                <FormLabel>{formFields.name.label}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="Your full name" {...field} />
+                                  <Input placeholder={formFields.name.placeholder} {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -181,11 +187,11 @@ export default function Contact() {
                             name="email"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Email *</FormLabel>
+                                <FormLabel>{formFields.email.label}</FormLabel>
                                 <FormControl>
                                   <Input
                                     type="email"
-                                    placeholder="your.email@company.com"
+                                    placeholder={formFields.email.placeholder}
                                     {...field}
                                   />
                                 </FormControl>
@@ -201,9 +207,9 @@ export default function Contact() {
                             name="company"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Company</FormLabel>
+                                <FormLabel>{formFields.company.label}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="Your company name" {...field} />
+                                  <Input placeholder={formFields.company.placeholder} {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -214,20 +220,22 @@ export default function Contact() {
                             name="inquiryType"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Inquiry Type *</FormLabel>
+                                <FormLabel>{formFields.inquiryType.label}</FormLabel>
                                 <Select
                                   onValueChange={field.onChange}
                                   defaultValue={field.value}
                                 >
                                   <FormControl>
                                     <SelectTrigger>
-                                      <SelectValue placeholder="Select inquiry type" />
+                                      <SelectValue placeholder={formFields.inquiryType.placeholder} />
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
-                                    <SelectItem value="product">Product Inquiry</SelectItem>
-                                    <SelectItem value="partnership">Partnership</SelectItem>
-                                    <SelectItem value="general">General Inquiry</SelectItem>
+                                    {inquiryTypes.map((type) => (
+                                      <SelectItem key={type.value} value={type.value}>
+                                        {type.label}
+                                      </SelectItem>
+                                    ))}
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
@@ -241,10 +249,10 @@ export default function Contact() {
                           name="message"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Message *</FormLabel>
+                              <FormLabel>{formFields.message.label}</FormLabel>
                               <FormControl>
                                 <Textarea
-                                  placeholder="Tell us about your requirements, questions, or how we can help..."
+                                  placeholder={formFields.message.placeholder}
                                   className="min-h-[150px] resize-none"
                                   {...field}
                                 />
@@ -256,11 +264,11 @@ export default function Contact() {
 
                         <Button type="submit" size="lg" disabled={isSubmitting}>
                           {isSubmitting ? (
-                            "Sending..."
+                            contactFormText.submittingButton
                           ) : (
                             <>
                               <Send className="mr-2 h-4 w-4" />
-                              Send Message
+                              {contactFormText.submitButton}
                             </>
                           )}
                         </Button>
@@ -275,7 +283,7 @@ export default function Contact() {
             <div className="space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Contact Information</CardTitle>
+                  <CardTitle>{contactSidebar.infoTitle}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   {contactInfo.map((item) => (
@@ -304,14 +312,14 @@ export default function Contact() {
               {/* Map Placeholder */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Our Location</CardTitle>
+                  <CardTitle>{contactSidebar.locationTitle}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-0">
                   <div className="aspect-video bg-muted flex items-center justify-center rounded-b-lg">
                     <div className="text-center p-4">
                       <MapPin className="mx-auto h-8 w-8 text-muted-foreground/50 mb-2" />
                       <p className="text-sm text-muted-foreground">
-                        Navi Mumbai, Maharashtra
+                        {company.address.short}
                       </p>
                     </div>
                   </div>

@@ -14,7 +14,6 @@ export interface Product {
 
 export const series = [
   "Housekeeping Series",
-  "Washroom & Industrial Cleaners",
   "Kitchen Series",
   "Laundry Series",
 ];
@@ -22,38 +21,41 @@ export const series = [
 export const productTypes = ["Concentrate", "Ready to Use"];
 
 export const products: Product[] = [
-  // Housekeeping Series
+  // ── Housekeeping Series ──────────────────────────────────────────────
   {
     id: "cw1",
     code: "CW1",
     name: "Bathroom Cleaner cum Sanitizer",
     series: "Housekeeping Series",
     type: "Concentrate",
-    description: "Cleans and disinfects all bathroom surfaces and removes hard water stains",
+    description:
+      "Effective for cleaning disinfection for all surface, fittings, bathtub, sink walls, tiles and remove hard water stains",
     usage: {
-      "Normal Soiling": "10-20ml per 1L water",
-      "Heavy Soiling": "20-30ml per 1L water",
+      "Normal Soiling": "10-20ml in 1ltr water",
+      "Heavy Soiling": "20-30ml in 1ltr water",
     },
   },
   {
     id: "cw2",
     code: "CW2",
-    name: "Floor Cleaner",
+    name: "Floor Cleaner - Hygienic Hard Surface Cleaner Concentrate",
     series: "Housekeeping Series",
     type: "Concentrate",
-    description: "Effective for polished hard surfaces like marble, granite, and tiles",
+    description:
+      "Effective for all hard surface such polished surface like marble, granite, tiles etc.",
     usage: {
-      "Normal Soiling": "10-20ml per 1L water",
-      "Heavy Soiling": "20-30ml per 1L water",
+      "Normal Soiling": "10-20ml in 1ltr water",
+      "Heavy Soiling": "20-30ml in 1ltr water",
     },
   },
   {
     id: "cw3",
     code: "CW3",
-    name: "Glass Cleaner",
+    name: "Glass Cleaner and multisurface cleaner",
     series: "Housekeeping Series",
     type: "Ready to Use",
-    description: "Streak-free cleaning for glass, mirrors, windows, and display cases",
+    description:
+      "Effective for all types glass and mirrors regular cleaning of windows, glass display cases; streak free",
   },
   {
     id: "cw4",
@@ -61,15 +63,17 @@ export const products: Product[] = [
     name: "Furniture Shine Maintainer",
     series: "Housekeeping Series",
     type: "Ready to Use",
-    description: "For wooden furniture, tables, chairs, and frames",
+    description:
+      "All wooden surface such as table, wooden chairs, wooden photo frames and other furniture",
   },
   {
     id: "cw5",
     code: "CW5",
-    name: "Room Freshener",
+    name: "Room Freshener - Water based Air Freshener",
     series: "Housekeeping Series",
     type: "Ready to Use",
-    description: "De-odorizes rooms with pleasant fragrance",
+    description:
+      "Bad odour neutralizer with pleasant fragrance for guest rooms, halls, offices, etc.",
   },
   {
     id: "cw6",
@@ -77,7 +81,8 @@ export const products: Product[] = [
     name: "Toilet Bowl Cleaner",
     series: "Housekeeping Series",
     type: "Ready to Use",
-    description: "Removes lime scale and stubborn stains; acts as sanitizer",
+    description:
+      "Effective in lime Scale Deposit and stubborn stains from toilet bowl; acts as sanitizer",
   },
   {
     id: "cw7",
@@ -85,10 +90,10 @@ export const products: Product[] = [
     name: "Floor Cleaner Concentrate",
     series: "Housekeeping Series",
     type: "Concentrate",
-    description: "For wet mopping and machine scrubbing",
+    description: "Used for both wet mopping as well as scrubbing with machine",
     usage: {
-      "Normal Soiling": "10-20ml per 1L water",
-      "Heavy Soiling": "20-30ml per 1L water",
+      "Normal Soiling": "10-20ml in 1ltr water",
+      "Heavy Soiling": "20-30ml in 1ltr water",
     },
   },
   {
@@ -97,105 +102,271 @@ export const products: Product[] = [
     name: "Multipurpose Paste Cleaner",
     series: "Housekeeping Series",
     type: "Ready to Use",
-    description: "Removes rust, oil, and paint stains from surfaces",
+    description:
+      "Effectively removes rust stains, oily stains, paint stains from any surface",
   },
-
-  // Washroom & Industrial Cleaners
   {
     id: "cw9",
     code: "CW9",
-    name: "Washroom Cleaner",
-    series: "Washroom & Industrial Cleaners",
+    name: "Washroom Cleaner - Water and rust stain remover",
+    series: "Housekeeping Series",
     type: "Concentrate",
-    description: "Removes hard water and rust stains",
+    description:
+      "Cleaning and disinfecting all surface fitting, bathtubs, sink wall tiles; removes hard water/rust",
     usage: {
-      "Normal Soiling": "50-70ml per 1L water",
-      "Heavy Soiling": "70-100ml per 1L water",
+      "Normal Soiling": "50-70ml in 1ltr water",
+      "Heavy Soiling": "70-100ml in 1ltr water",
     },
   },
   {
     id: "cwadc",
     code: "CWADC",
-    name: "Adhesive Remover",
-    series: "Washroom & Industrial Cleaners",
+    name: "Adhesive Remover - Gummy sticker and Adhesive remover",
+    series: "Housekeeping Series",
     type: "Ready to Use",
-    description: "Removes labels and gummy residue",
+    description:
+      "Removes labels, gummy stains from any surface without any marks",
   },
   {
     id: "cwhac",
     code: "CWHAC",
-    name: "Heavy Duty Degreaser",
-    series: "Washroom & Industrial Cleaners",
+    name: "Heavy Duty Degreaser (Industrial use)",
+    series: "Housekeeping Series",
     type: "Concentrate",
-    description: "Removes oil and grease stains; not for marble",
+    description:
+      "Removes hard soiling, oil and grease stains. Not to be used on marble and shine floors.",
     usage: {
-      "Normal Soiling": "10-20ml per 1L water",
-      "Heavy Soiling": "20-30ml per 1L water",
-      "Very Heavy": "50ml per 1L water",
+      "Normal Soiling": "10-20ml per 1ltr water",
+      "Heavy Soiling": "20-30ml per 1ltr water",
+      "Very Heavy Soiling": "50ml per 1ltr water",
     },
+  },
+  {
+    id: "cwls1",
+    code: "CWLS1",
+    name: "Liquid Soap - Gentle Handwash",
+    series: "Housekeeping Series",
+    type: "Ready to Use",
+    description: "Gentle & Deeply moisturizing liquid soap",
+  },
+  {
+    id: "cwls2",
+    code: "CWLS2",
+    name: "Liquid Soap Clear - Gentle Handwash",
+    series: "Housekeeping Series",
+    type: "Ready to Use",
+    description: "Clear Hand Wash Liquid with Refreshing Fragrance",
+  },
+  {
+    id: "cwbfs",
+    code: "CWBFS",
+    name: "Foam Soap - Rich foam soap for handwash",
+    series: "Housekeeping Series",
+    type: "Ready to Use",
+    description:
+      "Rich foamy lather for a sensorial hand washing experience",
+  },
+  {
+    id: "cwihc",
+    code: "CWIHC",
+    name: "Industrial Hand Cleaner",
+    series: "Housekeeping Series",
+    type: "Ready to Use",
+    description:
+      "Powerful formula to tackle grease, oil, paint, and other tough contaminants",
   },
   {
     id: "cwacs",
     code: "CWACS",
     name: "Alkaline Cleaner cum Sanitizer",
-    series: "Washroom & Industrial Cleaners",
+    series: "Housekeeping Series",
     type: "Concentrate",
-    description: "Urinal, tile, and ceramic cleaning",
+    description:
+      "Effective cleaning and de-odorizing of Urinal pots, Tiles and ceramics",
     usage: {
-      "Normal Soiling": "50-70ml per 1L water",
-      "Heavy Soiling": "70-100ml per 1L water",
+      "Normal Soiling": "50-70ml per 1ltr water",
+      "Heavy Soiling": "70-100ml per 1ltr water",
     },
   },
-
-  // Kitchen Series
   {
     id: "cwhc",
     code: "CWHC",
-    name: "Hygiclean White Phenyl",
-    series: "Kitchen Series",
+    name: "Hygiclean - Pine based white phenyl",
+    series: "Housekeeping Series",
     type: "Concentrate",
-    description: "Pine-based phenyl for floors and tiles",
+    description:
+      "Suitable for floors, kitchen/bathroom tiles and fixtures",
     usage: {
-      "Normal Soiling": "10-20ml per 1L water",
-      "Heavy Soiling": "20-30ml per 1L water",
+      "Normal Soiling": "10-20ml per 1ltr water",
+      "Heavy Soiling": "20-30ml per 1ltr water",
     },
+  },
+  {
+    id: "cwnfc",
+    code: "CWNFC",
+    name: "Natural Floor Cleaner - Citronella oil based",
+    series: "Housekeeping Series",
+    type: "Concentrate",
+    description:
+      "Natural herbs that repel flying insects; used on floors and tiles",
+    usage: {
+      "Normal Soiling": "10-20ml per 1ltr water",
+      "Heavy Soiling": "20-30ml per 1ltr water",
+    },
+  },
+  {
+    id: "cwcs",
+    code: "CWCS",
+    name: "Carpet Shampoo",
+    series: "Housekeeping Series",
+    type: "Concentrate",
+    description: "Carpet & Upholstery Shampoo Concentrate",
+    usage: {
+      Standard: "50-100ml in 1ltr of water",
+    },
+  },
+  {
+    id: "cwcd",
+    code: "CWCD",
+    name: "Carpet Detergent",
+    series: "Housekeeping Series",
+    type: "Concentrate",
+    description: "Carpet & Upholstery cleaner & stain remover",
+    usage: {
+      Standard: "50-100ml in 1ltr of water",
+    },
+  },
+
+  // ── Kitchen Series ───────────────────────────────────────────────────
+  {
+    id: "cwss",
+    code: "CWSS",
+    name: "Steel Shiner - Stainless Steel Polish",
+    series: "Kitchen Series",
+    type: "Ready to Use",
+    description:
+      "Polishing agent for all kinds of stainless steel surfaces (restaurants, plants, etc.)",
   },
   {
     id: "cwk1",
     code: "CWK1",
-    name: "Dishwash Det Concentrate",
+    name: "Dishwash Det Concentrate - Manual Dishwash",
     series: "Kitchen Series",
     type: "Concentrate",
-    description: "Manual dishwashing detergent",
+    description:
+      "Effective cleaning of oil, grease, fat on plates, crockery, utensils, etc.",
     usage: {
-      "Normal Soiling": "10-20ml per 1L water",
-      "Heavy Soiling": "20-30ml per 1L water",
+      "Normal Soiling": "10-20ml per 1ltr water",
+      "Heavy Soiling": "20-30ml per 1ltr water",
+    },
+  },
+  {
+    id: "cwk2",
+    code: "CWK2",
+    name: "Multi Det - Multipurpose Liquid Detergent",
+    series: "Kitchen Series",
+    type: "Concentrate",
+    description:
+      "Effective cleaning for kitchen floors, walls, racks, and equipment",
+    usage: {
+      "Normal Soiling": "10-20ml per 1ltr water",
+      "Heavy Soiling": "20-30ml per 1ltr water",
     },
   },
   {
     id: "cwk3",
     code: "CWK3",
-    name: "Veggie & Fruit Wash",
+    name: "Vegie & Fruit Wash - Chlorine based sanitizer",
     series: "Kitchen Series",
     type: "Concentrate",
-    description: "Chlorine-based sanitizer",
+    description:
+      "For vegetable & fruit wash & chlorination of potable water",
     usage: {
-      "Fruits & Vegetables": "5ml per 1L water",
-      "Potable Water": "1ml per 1L water",
+      "Fruits & Vegetables": "5ml per 1ltr water",
+      "Potable Water": "1ml per 1ltr water",
     },
   },
+  {
+    id: "cwk4",
+    code: "CWK4",
+    name: "Machine Dishwash Det. - Industrial machine detergent",
+    series: "Kitchen Series",
+    type: "Concentrate",
+    description:
+      "Non foaming commercial grade liquid detergent for dishwasher machines",
+    usage: {
+      Standard: "3ml-6ml per 1ltr at 60-65°C",
+    },
+  },
+  {
+    id: "cwk5",
+    code: "CWK5",
+    name: "Machine Dishwash Rinse - Industrial machine rinse aid",
+    series: "Kitchen Series",
+    type: "Concentrate",
+    description: "Concentrated Alkali neutralizer and drying agent",
+    usage: {
+      Standard: "1ml-3ml per 1ltr at 60-65°C",
+    },
+  },
+  {
+    id: "cwk6",
+    code: "CWK6",
+    name: "Stainless Steel Polish / Oven and grill cleaner",
+    series: "Kitchen Series",
+    type: "Concentrate",
+    description:
+      "Removes heavy carbonaceous and baked deposits from grills, ovens, fryers",
+    usage: {
+      Standard: "100-150ml per 1ltr water",
+    },
+  },
+  {
+    id: "cwk8",
+    code: "CWK8",
+    name: "Descaler Liquid - Descaler concentrate",
+    series: "Kitchen Series",
+    type: "Concentrate",
+    description:
+      "Removes calcium and magnesium scales from hard surfaces, metals, and glasses",
+    usage: {
+      Standard: "100ml-200ml per 1ltr water",
+    },
+  },
+  {
+    id: "cwk9",
+    code: "CWK9",
+    name: "Chlorodet - Chlorine based cleaner cum sparkler",
+    series: "Kitchen Series",
+    type: "Concentrate",
+    description:
+      "Formulated for removal of stubborn stains from cups and crockery in soaking process",
+    usage: {
+      Standard: "30-50ml per 1ltr water",
+    },
+  },
+  {
+    id: "cwk10",
+    code: "CWK10",
+    name: "Kitchen Cleaner - Kitchen surface Cleaner",
+    series: "Kitchen Series",
+    type: "Ready to Use",
+    description:
+      "Tackles grease and grime on gas stoves, countertops, and chimneys",
+  },
 
-  // Laundry Series
+  // ── Laundry Series ───────────────────────────────────────────────────
   {
     id: "cwl1",
     code: "CWL1",
     name: "Liquid Laundry Detergent Top Load",
     series: "Laundry Series",
     type: "Concentrate",
-    description: "For top-loading washing machines",
+    description:
+      "Color-Safe & Gentle on Fabrics; protects vibrant colors and softens",
     usage: {
       "Normal (4-6kg)": "30-40ml",
-      "Heavy (6kg+)": "60-70ml",
+      "Heavy (6kg+ or heavily soiled)": "60-70ml",
     },
   },
   {
@@ -204,44 +375,104 @@ export const products: Product[] = [
     name: "Liquid Laundry Detergent Front Load",
     series: "Laundry Series",
     type: "Concentrate",
-    description: "For front-loading washing machines",
+    description:
+      "Color-Safe & Gentle on Fabrics; protects vibrant colors and softens",
     usage: {
       "Normal (4-6kg)": "30-40ml",
-      "Heavy (6kg+)": "60-70ml",
+      "Heavy (6kg+ or heavily soiled)": "60-70ml",
+    },
+  },
+  {
+    id: "cwl3",
+    code: "CWL3",
+    name: "Laundry Super Uni Detergent (Industrial/Institutional)",
+    series: "Laundry Series",
+    type: "Concentrate",
+    description: "Low foaming, high concentrated laundry detergent",
+    usage: {
+      Standard: "20-30ml for 5-6kg of dry clothes",
     },
   },
   {
     id: "cwl4",
     code: "CWL4",
-    name: "Super Softener",
+    name: "Super Softener - Fabric Softener",
     series: "Laundry Series",
     type: "Ready to Use",
-    description: "After-wash fabric conditioner",
+    description:
+      "After wash fabric conditioner with long lasting fragrance & shine",
     usage: {
-      "Standard": "10-15ml per kg of clothes",
+      Standard: "10-15ml per kg of clothes",
     },
+  },
+  {
+    id: "cwl5",
+    code: "CWL5",
+    name: "Ultra Emulsifier - Concentrated Surfactant booster",
+    series: "Laundry Series",
+    type: "Concentrate",
+    description:
+      "Formulated for fabrics exposed to mineral oils and grease stains",
+    usage: {
+      "Normal Soiling": "3-5ml per kg",
+      "Heavy Soiling": "6-8ml per kg",
+    },
+  },
+  {
+    id: "cwl6",
+    code: "CWL6",
+    name: "Liquid Alkaline Booster",
+    series: "Laundry Series",
+    type: "Concentrate",
+    description:
+      "Enhance wash performance by increasing pH of wash solution",
+    usage: {
+      "Normal Soiling": "1-2ml per kg",
+      "Heavy Soiling": "3-4ml per kg",
+    },
+  },
+  {
+    id: "cwl7",
+    code: "CWL7",
+    name: "Liquid Rinse - Laundry Liquid Alkali neutralizer",
+    series: "Laundry Series",
+    type: "Concentrate",
+    description:
+      "Neutralizes residual alkali and prevents yellowing or fabric damage",
+    usage: {
+      Standard: "1-4ml per kg of clothes",
+    },
+  },
+  {
+    id: "cwl8",
+    code: "CWL8",
+    name: "Rust Remover - Fabric rust stain remover",
+    series: "Laundry Series",
+    type: "Ready to Use",
+    description:
+      "Destains iron staining formed by rust depositing on fabrics",
   },
   {
     id: "cwl9",
     code: "CWL9",
-    name: "Hypobleach",
+    name: "Hypobleach - Conc. Stabilised chlorine bleach",
     series: "Laundry Series",
     type: "Concentrate",
-    description: "Stabilized chlorine bleach",
+    description: "Excellent destainer for all types of white fabric",
     usage: {
-      "Light Soil": "6ml per kg",
-      "Heavy Soil": "15ml per kg",
+      "Light Soil": "6ml per kg dry white clothes",
+      "Heavy Soil": "15ml per kg dry white clothes",
     },
   },
   {
     id: "cwl2-oxy",
-    code: "CWL2_OXY",
-    name: "Oxybleach",
+    code: "CWL2-Oxy",
+    name: "Oxybleach - Fabric stain remover",
     series: "Laundry Series",
     type: "Ready to Use",
-    description: "Fabric stain remover safe for colors",
+    description: "Excellent stain remover, safe for colored clothes",
     usage: {
-      "Standard": "2-4ml per kg of clothes",
+      Standard: "2-4ml per kg of dry clothes",
     },
   },
 ];
