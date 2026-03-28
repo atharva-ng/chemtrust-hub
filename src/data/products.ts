@@ -10,6 +10,7 @@ export interface Product {
   type: "Concentrate" | "Ready to Use";
   description: string;
   usage?: ProductUsage;
+  image?: string;
 }
 
 export const series = [
@@ -113,6 +114,7 @@ export const products: Product[] = [
     type: "Concentrate",
     description:
       "Cleaning and disinfecting all surface fitting, bathtubs, sink wall tiles; removes hard water/rust",
+    image: "/cleanwhiz_images/img_washroom_cleaner.jpeg",
     usage: {
       "Normal Soiling": "50-70ml in 1ltr water",
       "Heavy Soiling": "70-100ml in 1ltr water",
@@ -135,6 +137,7 @@ export const products: Product[] = [
     type: "Concentrate",
     description:
       "Removes hard soiling, oil and grease stains. Not to be used on marble and shine floors.",
+    image: "/cleanwhiz_images/img_floor_degreasing.jpeg",
     usage: {
       "Normal Soiling": "10-20ml per 1ltr water",
       "Heavy Soiling": "20-30ml per 1ltr water",
@@ -246,6 +249,7 @@ export const products: Product[] = [
     type: "Ready to Use",
     description:
       "Polishing agent for all kinds of stainless steel surfaces (restaurants, plants, etc.)",
+    image: "/cleanwhiz_images/img_steel_cleaner.jpeg",
   },
   {
     id: "cwk1",
@@ -341,6 +345,7 @@ export const products: Product[] = [
     type: "Concentrate",
     description:
       "Formulated for removal of stubborn stains from cups and crockery in soaking process",
+    image: "/cleanwhiz_images/img_chlorodet_1.jpeg",
     usage: {
       Standard: "30-50ml per 1ltr water",
     },
@@ -364,6 +369,7 @@ export const products: Product[] = [
     type: "Concentrate",
     description:
       "Color-Safe & Gentle on Fabrics; protects vibrant colors and softens",
+    image: "/cleanwhiz_images/img_detergent_topload_liquid.jpeg",
     usage: {
       "Normal (4-6kg)": "30-40ml",
       "Heavy (6kg+ or heavily soiled)": "60-70ml",
@@ -377,6 +383,7 @@ export const products: Product[] = [
     type: "Concentrate",
     description:
       "Color-Safe & Gentle on Fabrics; protects vibrant colors and softens",
+    image: "/cleanwhiz_images/img_detergent_frontload_liquid.jpeg",
     usage: {
       "Normal (4-6kg)": "30-40ml",
       "Heavy (6kg+ or heavily soiled)": "60-70ml",
@@ -389,6 +396,7 @@ export const products: Product[] = [
     series: "Laundry Series",
     type: "Concentrate",
     description: "Low foaming, high concentrated laundry detergent",
+    image: "/cleanwhiz_images/img_detergent_super_uni.jpeg",
     usage: {
       Standard: "20-30ml for 5-6kg of dry clothes",
     },
@@ -401,6 +409,7 @@ export const products: Product[] = [
     type: "Ready to Use",
     description:
       "After wash fabric conditioner with long lasting fragrance & shine",
+    image: "/cleanwhiz_images/img_fabric_softner.jpeg",
     usage: {
       Standard: "10-15ml per kg of clothes",
     },
@@ -413,6 +422,7 @@ export const products: Product[] = [
     type: "Concentrate",
     description:
       "Formulated for fabrics exposed to mineral oils and grease stains",
+    image: "/cleanwhiz_images/img_ultra_emulsifier.jpeg",
     usage: {
       "Normal Soiling": "3-5ml per kg",
       "Heavy Soiling": "6-8ml per kg",
@@ -439,6 +449,7 @@ export const products: Product[] = [
     type: "Concentrate",
     description:
       "Neutralizes residual alkali and prevents yellowing or fabric damage",
+    image: "/cleanwhiz_images/img_liquid_rinse.jpeg",
     usage: {
       Standard: "1-4ml per kg of clothes",
     },
@@ -451,6 +462,7 @@ export const products: Product[] = [
     type: "Ready to Use",
     description:
       "Destains iron staining formed by rust depositing on fabrics",
+    image: "/cleanwhiz_images/img_rust_remover.jpeg",
   },
   {
     id: "cwl9",
@@ -459,6 +471,7 @@ export const products: Product[] = [
     series: "Laundry Series",
     type: "Concentrate",
     description: "Excellent destainer for all types of white fabric",
+    image: "/cleanwhiz_images/img_hypo_bleach_1.jpeg",
     usage: {
       "Light Soil": "6ml per kg dry white clothes",
       "Heavy Soil": "15ml per kg dry white clothes",
@@ -471,6 +484,7 @@ export const products: Product[] = [
     series: "Laundry Series",
     type: "Ready to Use",
     description: "Excellent stain remover, safe for colored clothes",
+    image: "/cleanwhiz_images/img_oxy_bleach.jpeg",
     usage: {
       Standard: "2-4ml per kg of dry clothes",
     },
