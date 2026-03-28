@@ -83,6 +83,18 @@ export default function ProductDetail() {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Header */}
+            {/* Product Image */}
+            {product.image && (
+              <div className="overflow-hidden rounded-lg border bg-muted">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full max-h-[400px] object-cover"
+                />
+              </div>
+            )}
+
+            {/* Header */}
             <div>
               <div className="flex items-start gap-4 mb-4">
                 <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10">
