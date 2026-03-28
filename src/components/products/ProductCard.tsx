@@ -3,7 +3,7 @@ import { Product } from "@/data/products";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
@@ -16,7 +16,21 @@ const typeColors = {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <Card className="group flex h-full flex-col transition-shadow hover:shadow-md">
+    <Card className="group flex h-full flex-col transition-shadow hover:shadow-md overflow-hidden">
+      {product.image ? (
+        <div className="aspect-[4/3] overflow-hidden bg-muted">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <div className="flex aspect-[4/3] items-center justify-center bg-muted/50">
+          <Sparkles className="h-10 w-10 text-muted-foreground/30" />
+        </div>
+      )}
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1">
